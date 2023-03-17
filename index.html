@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isidubada - Translator</title>
+    <style>
+        body {
+            background-color: lightseagreen;
+            color: whitesmoke;
+        }
+        .app {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 80vh;
+            width: 350px;
+            margin: 10px auto;
+        }
+        textarea, textarea:focus {
+            border-radius: 5px;
+            border: 1px solid tomato;
+        }
+        .output {
+            background-color: wheat;
+            color: black;
+            border: 1px solid tomato;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            max-width: 300px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-evenly;
+            width: 350px;
+        }
+        button {
+            padding: 10px;
+            background-color: tomato;
+            color: white;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        button:hover {
+            background-color: lightcoral;
+            cursor: pointer;
+        }
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <h1>Isidubada Translator</h1>
+        <textarea id="input" cols="30" rows="10"></textarea>
+        <div class="output"id="output">results will be displayed here</div>
+        <div class="buttons">
+            <button id="encode">encode</button>
+            <button id="decode">decode</button>
+        </div>
+        <em>Made with <span class="red">&hearts;</span> by <a href="https://github.com/LukhanyoV">Lukhanyo Vakele</a></em>
+    </div>
+    <script>
+        const inp = document.getElementById("input");
+        const out = document.getElementById("output");
+
+        const encodeStr = () => {
+            out.innerHTML = inp.value.replace(/[aeiou]/ig, c => c+"d"+c.toLowerCase());
+        };
+
+        const decodeStr = () => {
+            out.innerHTML = inp.value.replace(/[aeiou]d[aeiou]/ig, c => c[0]);
+        };
+
+        document.getElementById("encode").addEventListener("click", encodeStr);
+        document.getElementById("decode").addEventListener("click", decodeStr);
+    </script>
+</body>
+</html>
